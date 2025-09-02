@@ -1,0 +1,145 @@
+@startuml Pong 
+class Pong
+class Jugador
+class Fondo
+class Sonido
+class Efecto
+class Nivel
+Class Pelota
+class Aceleracion
+class Puntuacion
+class Angulo
+class Barra
+class Velocidad
+class Movimiento
+class Control
+class Boton
+class TablaPuntuacion
+class Color
+class Dificultad
+class Nombre
+class Direccion
+class Tiempo
+class Circulo
+class Figura
+class Area
+class Largo 
+class Ancho
+class Numero
+class Posicion
+class Sentido
+class Rectangulo
+class Trayectoria
+class Vector
+class CajaColision
+
+Pong "1" *-- "2" Jugador
+Pong *-- Fondo
+Pong "1" *-- "10" Nivel
+Pong *-- Pelota
+Pong "1" *-- "2" Barra
+Pong *-- TablaPuntuacion
+Fondo "1" *-- "10" Color
+Nivel *-- Dificultad
+
+Pelota <|-- Circulo
+Circulo <|-- Figura
+Pelota "1" *-- "2" Sonido
+Sonido <|-- Efecto
+Velocidad *-- Movimiento
+Aceleracion *-- Velocidad
+Velocidad *-- Tiempo
+Aceleracion *-- Tiempo
+Vector *-- Direccion
+Vector *-- Sentido
+Trayectoria *-- Angulo
+Sentido <|-- Numero
+Angulo <|-- Numero
+
+Barra <|-- Rectangulo
+Area *-- Ancho
+Area *-- Largo
+Rectangulo <|-- Figura
+Largo <|-- Numero
+Ancho <|-- Numero
+Figura *-- Posicion
+Posicion *-- Numero
+Movimiento *-- Posicion
+Figura *-- Area
+Direccion <|-- Trayectoria
+Velocidad <|-- Vector
+Aceleracion<|-- Vector
+Figura *-- CajaColision
+
+TablaPuntuacion "1" *-- "10" Puntuacion
+TablaPuntuacion "1" *-- "10" Nombre
+Jugador *-- Puntuacion
+Jugador *-- Nombre
+Jugador o-- Control
+Control "1" *-- "2" Boton
+Boton o-- Sentido
+
+class Control {
++PresionarBoton()
+}
+class Sentido {
++CambiarSentido(Sentido)
+}
+class Pong {
+-Nivel niveles[10]
+-Barra barraIzquierda
+-Barra barraDerecha
+-Pelota pelota
+-TablaPuntuaion tabla
+-Jugador jugadorIzquierda
+-Jugador jugadorDerecha
+-Fondo fondo
+}
+class Nivel{
+-Dificultad dificultad
+}
+class Pelota{
+-Sonido sonidoRebote
+-Sonido sonidoAnotacion
+}
+
+class TablaPuntuacion{
+-Nombre nombres[10]
+-Puntuacion puntuaciones[10]
+}
+
+class Jugador{
+-Nombre nombre
+-Puntuacion puntuacion
+}
+class Fondo {
+-Color colores[10]
+}
+class Figura {
+-Area areaCirculo
+-Area areaRectangulo
+-CajaColision colision
+-Posicion posicion
+}
+class Control{
+-Boton botonArriba
+-Boton botonAbajo
+}
+class Posicion{
+-Numero posicionX
+-Numero PosicionY
+}
+class Area{
+-Largo largo
+-Ancho ancho
+}
+class Trayectoria{
+-Angulo angulo
+}
+class Movimiento{
+-Posicion posicionInicial
+-Posicion posicionFinal
+}
+
+
+@enduml
